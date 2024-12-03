@@ -55,25 +55,6 @@ export default {
 </script>
 
 <style scoped>
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-input, textarea {
-  padding: 0.5em;
-  border: 1px solid #ccc;
-}
-button {
-  align-self: flex-start;
-  margin-right: 0.5em;
-}
-.opinion {
-  border: 1px solid #ddd;
-  padding: 1em;
-  margin-bottom: 1em;
-}
-
 .no-reviews {
   margin-top: 60px;  /* Push to bottom */
   padding: 20px;
