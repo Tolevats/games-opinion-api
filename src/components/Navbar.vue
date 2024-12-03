@@ -8,7 +8,7 @@
       <div class="left-links">
         <router-link to="/">
         <!-- <span class="home-icon">🏠</span> --> Home</router-link>
-        <router-link to="/opinions/:game">Opinions</router-link>
+        <router-link to="/opinions">Opinions</router-link>
       </div>
       <div class="right-links">
         <router-link to="/admin">

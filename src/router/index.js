@@ -10,7 +10,7 @@ const routes = [
     component: () => import('@/views/Home.vue'),
   },
   {
-    path: '/opinions/:game',
+    path: '/opinions',
     name: 'Opinions',
     component: () => import('@/views/Opinions.vue'),
     props: true, // Permite pasar parámetros como props.
