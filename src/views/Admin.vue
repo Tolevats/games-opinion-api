@@ -1,4 +1,5 @@
 <template>
+  <!-- en desarrollo, futura implementación -->
   <div>
     <h1>Panel de Administración</h1>
     <p>Nombre: {{ user.firstName }}</p>

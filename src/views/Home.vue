@@ -29,8 +29,7 @@ export default {
   },
   methods: {
     fetchGames() {
-      const API_KEY = '606bdb722c014c1ca36319fcda8888f3';  //api de RAWG
-      const url = `https://api.rawg.io/api/games?key=${API_KEY}`;
+      const url = `https://api.rawg.io/api/games?key=${process.env.API_KEY}`;
       
       fetch(url)
         .then(response => {
