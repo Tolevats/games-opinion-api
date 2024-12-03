@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    submitForm() {
+    addOrUpdateOpinion() {
       this.$emit('submit', { ...this.localOpinion });  // Emit form data to parent
       this.localOpinion = { author: '', text: '' };  // Reset form
     }
@@ -48,5 +48,6 @@ input, textarea {
 }
 button {
   align-self: flex-start;
+  margin-right: 0.5em;
 }  
 </style>
