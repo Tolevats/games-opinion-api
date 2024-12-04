@@ -1,15 +1,17 @@
 <template>
-  <div class="accordion">
-    <div class="accordion-header" @click="toggleAccordion">
-      <strong>{{ opinion.author }}:</strong>
-      <button class="toggle-button">{{ isOpen ? 'Hide' : 'Show' }} Details</button>
-    </div>
+  <div>
+    <div v-for="(review, index) in reviews" :key="index" class="accordion">
+      <div class="accordion-header" @click="toggleAccordion">
+        <strong>{{ review.author }}</strong>
+        <button class="toggle-button">{{ isOpen ? 'Hide' : 'Show' }} Details</button>
+      </div>
 
-    <div v-if="isOpen" class="accordion-body">
-      <p>{{ opinion.text }}</p>
-      <div class="actions">
-        <button @click="editOpinion" aria-label="Edit review">Edit</button>
-        <button @click="deleteOpinion" aria-label="Delete review">Delete</button>
+      <div v-if="isOpen" class="accordion-body">
+        <p>{{ review.text }}</p>
+        <div class="actions">
+          <button @click="editOpinion" aria-label="Edit review">Edit</button>
+          <button @click="deleteOpinion" aria-label="Delete review">Delete</button>
+        </div>
       </div>
     </div>
   </div>
@@ -18,7 +20,7 @@
 <script>
 export default {
   name: 'OpinionAccordion',
-  props: ['opinion'],
+  props: ['reviews'],
   data() {
     return {
       isOpen: false, // Controls accordion visibility
