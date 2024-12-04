@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>List of games</h1>
-    <div v-if="loading">Loading games...</div>
+    <div v-if="loading" class="load">Loading games...</div>
     <div v-else-if="error">{{ error }}</div>
     <div v-else class="game-gallery">
       <GameCard
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     fetchGames() {
-      const url = `https://api.rawg.io/api/games?key=${process.env.API_KEY}`;
+      const url = `https://api.rawg.io/api/games?key=${process.env.VUE_APP_API_KEY}`;
       
       fetch(url)
         .then(response => {
@@ -58,6 +58,12 @@ export default {
 </script>
 
 <style scoped>
+.load {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 4em;
+  text-align: center
+}
+
 .game-gallery {
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@
   <!-- este form manejará la creación y actualización de opiniones -->
   <form @submit.prevent="addOrUpdateOpinion">
     <label for="author">Name:</label>
-    <input id="author" v-model="localOpinion.author" placeholder="Enter your name" required />
+    <input id="author" v-model="localOpinion.author" placeholder="Enter your name or alias" required />
     <label for="review">Review:</label>
     <textarea id="review" v-model="localOpinion.text" placeholder="Write your review here..." required></textarea>
 
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     addOrUpdateOpinion() {
-      this.$emit('submit', { ...this.localOpinion });  // Emit form data to parent
+      this.$emit('sendOpi', { ...this.localOpinion });  // Emit form data to parent
       this.localOpinion = { author: '', text: '' };  // Reset form
     }
   }

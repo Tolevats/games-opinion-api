@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Reviews about: {{ gameName }}</h1>
-    <opinion-form :newOpinion="newOpinion" :isEditing="isEditing" @submit="addOrUpdateOpinion" />
+    <opinion-form :newOpinion="newOpinion" :isEditing="isEditing" @sendOpi="addOrUpdateOpinion" />
     <div class="reviews-container">
       <opinion-accordion :reviews="opinions" 
                        @edit="editOpinion" 
