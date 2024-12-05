@@ -2,29 +2,34 @@
   <div id="app">
     <Navbar />
     <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   components: {
     Navbar,
+    Footer
   },
 };
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
-} */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #121212; /* Fondo oscuro */
+  color: #ffffff; /* Texto principal */
+  height: 100vh;
+}
 </style>
