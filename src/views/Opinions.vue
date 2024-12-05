@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1>Reviews about: {{ gameName }}</h1>
+    <h2>Leave your comment here about: {{ gameName }}</h2>
     <opinion-form :newOpinion="newOpinion" :isEditing="isEditing" @sendOpi="addOrUpdateOpinion" />
     <div class="reviews-container">
+      <h2>You can see your comment below.</h2>
       <opinion-accordion :reviews="opinions" 
                        @edit="editOpinion" 
                        @delete="deleteOpinion" />
@@ -29,26 +30,49 @@ export default {
   },
   methods: {
     addOrUpdateOpinion(opinion) {
-      if (this.isEditing) {
-        // Actualiza la opinión existente
-        this.opinions.splice(this.editingIndex, 1, opinion);
+      console.log('Data received:', opinion);
+      console.log(this.opinions);
+      this.opinions[0].author = 'test'
+/*       if (opinion.index !== undefined && opinion.updatedReview) {
+      // Usar Vue.set para asegurar la reactividad
+        this.$set(this.opinions, opinion.index, opinion.updatedReview);
+      } else if (this.isEditing) {
+        this.$set(this.opinions, this.editingIndex, opinion);
         this.isEditing = false;
       } else {
-        // Agrega una nueva opinión
         this.opinions.push(opinion);
       }
-      this.newOpinion = { author: '', text: '' };  //resetear form
+      this.resetForm(); */
     },
+/*       if (this.isEditing) {
+        // Para cuando la llamada provenga del formulario normal
+        this.opinions.splice(this.editingIndex, 1, opinion);
+        this.isEditing = false;
+      } else if (opinion.index !== undefined && opinion.updatedReview) {
+        // Cuando la llamada provenga desde el Accordion con índice
+        this.opinions.splice(opinion.index, 1, opinion.updatedReview);
+      } else {
+      // Agrega una nueva opinión
+        this.opinions.push(opinion);
+      }
+      this.resetForm();
+    }, */
+
     editOpinion(index) {
-      this.newOpinion = { ...this.opinions[index] };
+      this.newOpinion = { ...this.opinions[index] }; //load review data into the form
       this.isEditing = true;
       this.editingIndex = index;
     },
     deleteOpinion(index) {
       this.opinions.splice(index, 1);
       this.isEditing = false; 
-      this.newOpinion = { author: '', text: '' };  
+      this.resetForm(); 
     },
+    resetForm() {
+      this.newOpinion = { author: '', text: '' };
+      this.editingIndex = null;
+      this.isEditing = false;
+    }
   },
   components: { OpinionForm, OpinionAccordion }, 
 };
