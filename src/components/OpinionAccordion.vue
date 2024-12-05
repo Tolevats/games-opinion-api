@@ -1,40 +1,59 @@
 <template>
   <div>
     <div v-for="(review, index) in reviews" :key="index" class="accordion">
-      <div class="accordion-header" @click="toggleAccordion">
-        <strong>{{ review.author }}</strong>
-        <button class="toggle-button">{{ isOpen ? 'Hide' : 'Show' }} Details</button>
+      <div class="accordion-header" @click="toggleAccordion(index)">
+        <p>Review made by: <strong>{{ review.author }}</strong></p>
+        <button class="toggle-button">{{ openIndex === index ? 'Hide' : 'Show' }} Details</button>
       </div>
 
-      <div v-if="isOpen" class="accordion-body">
-        <p>{{ review.text }}</p>
+      <div v-if="openIndex === index" class="accordion-body">
+        <p>Review: {{ review.text }}</p>
         <div class="actions">
-          <button @click="editOpinion" aria-label="Edit review">Edit</button>
-          <button @click="deleteOpinion" aria-label="Delete review">Delete</button>
+          <button @click="startEditing(index, review)" aria-label="Edit review">Edit</button>
+          <button @click="deleteOpinion(index)" aria-label="Delete review">Delete</button>
         </div>
+
+        <!-- Render the OpinionForm when editing -->
+        <OpinionForm 
+          v-if="editingIndex === index" 
+          :newOpinion="reviewToEdit"
+          :isEditing="true"
+          @sendOpi="saveEdit(index)"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import OpinionForm from './OpinionForm.vue';
+
 export default {
   name: 'OpinionAccordion',
   props: ['reviews'],
+  components: { OpinionForm },
   data() {
     return {
-      isOpen: false, // Controls accordion visibility
+      openIndex: null,        // Tracks which accordion is open
+      editingIndex: null,     // Tracks which review is being edited
+      reviewToEdit: null,     // Holds the review data for editing
     };
   },
   methods: {
-    toggleAccordion() {
-      this.isOpen = !this.isOpen; // Toggle visibility
+    toggleAccordion(index) {
+      this.openIndex = this.openIndex === index ? null : index;
     },
-    editOpinion() {
-      this.$emit('edit', this.opinion); // Pass opinion data
+    startEditing(index, review) {
+      this.editingIndex = index;  //set the index for editing
+      this.reviewToEdit = { ...review };  //pass a copy of the review to the form
     },
-    deleteOpinion() {
-      this.$emit('delete', this.opinion); // Pass opinion data
+    saveEdit(index) {
+      console.log('Save Edit triggered:', index, this.reviewToEdit);
+      this.$emit('update', { index, updatedReview: this.reviewToEdit });  //emitir el índice y la opinión actualizada
+      this.editingIndex = null;  //cerrar la edición
+    },
+    deleteOpinion(index) {
+      this.$emit('delete', index);  //pass the index to the parent for deletion
     },
   },
 };
