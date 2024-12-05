@@ -22,16 +22,17 @@ export default {
 <style scoped>
 .game-card {
   border: 1px solid #ccc;
-  border-radius: 10px;
+  background: linear-gradient(145deg, #1f1f1f, #292929);
+  border-radius: 12px;
   padding: 1em;
-  margin-bottom: 1.5em;
-  text-align: center;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  margin: 1.5em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s, box-shadow 0.3s;;
+  overflow: hidden;
 }
 .game-card:hover {
-  transform: scale(1.03); /* Slight zoom effect on hover */
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
 }
 
 .game-image {
@@ -71,20 +72,17 @@ p {
 
 button {
   margin-top: 0.8em;
-  padding: 0.6em 1.2em;
+  padding: 0.8em 1.5em;
   border: none;
-  border-radius: 20px;
-  background-color: #ff4d4d;
+  border-radius: 8px;
+  background-color: #4CAF50;
   color: white;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #ff3333;
+  background-color: #357a38;
 }
 </style>

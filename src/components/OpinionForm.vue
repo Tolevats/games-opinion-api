@@ -46,13 +46,35 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  margin: 2em;
 }
 input, textarea {
   padding: 0.5em;
   border: 1px solid #ccc;
+  font-size: 1em; 
 }
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Montserrat', sans-serif; /* Match font */
+  font-size: 1em;                        /* Match size */
+}
+
 button {
   align-self: flex-start;
-  margin-right: 0.5em;
-}  
+  margin-top: 0.8em;
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #357a38; /*#ff3333;rojo para delete*/
+}
 </style>

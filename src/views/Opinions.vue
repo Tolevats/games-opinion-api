@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="review-container">
     <h2>Leave your comment here about: {{ gameName }}</h2>
     <opinion-form :newOpinion="newOpinion" :isEditing="isEditing" @sendOpi="addOrUpdateOpinion" />
     <div class="reviews-container">
@@ -32,8 +32,8 @@ export default {
     addOrUpdateOpinion(opinion) {
       console.log('Data received:', opinion);
       console.log(this.opinions);
-      this.opinions[0].author = 'test'
-/*       if (opinion.index !== undefined && opinion.updatedReview) {
+ /*      this.opinions[0].author = 'test' */
+      if (opinion.index !== undefined && opinion.updatedReview) {
       // Usar Vue.set para asegurar la reactividad
         this.$set(this.opinions, opinion.index, opinion.updatedReview);
       } else if (this.isEditing) {
@@ -42,7 +42,7 @@ export default {
       } else {
         this.opinions.push(opinion);
       }
-      this.resetForm(); */
+      this.resetForm();
     },
 /*       if (this.isEditing) {
         // Para cuando la llamada provenga del formulario normal
@@ -79,6 +79,12 @@ export default {
 </script>
 
 <style scoped>
+/* .review-container {} */
+
+h2 {
+  margin: 2em;
+}
+
 .no-reviews {
   margin-top: 60px;  /* Push to bottom */
   padding: 20px;

@@ -58,16 +58,26 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  color: #4CAF50; /* Verde neón */
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .load {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 4em;
-  text-align: center
+  text-align: center;
+  color: #ff6f61; /* acento llamativo */
 }
 
 .game-gallery {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.5em;
+  padding: 1em;
 }
 
 /* Tablet and Larger Screens */
@@ -76,10 +86,6 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5em;
-  }
-
-  .game-card {
-    text-align: left;
   }
 
   h3 {

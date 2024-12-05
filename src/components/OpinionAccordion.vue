@@ -9,8 +9,8 @@
       <div v-if="openIndex === index" class="accordion-body">
         <p>Review: {{ review.text }}</p>
         <div class="actions">
-          <button @click="startEditing(index, review)" aria-label="Edit review">Edit</button>
-          <button @click="deleteOpinion(index)" aria-label="Delete review">Delete</button>
+          <button class="edition" @click="startEditing(index, review)" aria-label="Edit review">Edit</button>
+          <button class="deletion" @click="deleteOpinion(index)" aria-label="Delete review">Delete</button>
         </div>
 
         <!-- Render the OpinionForm when editing -->
@@ -81,7 +81,7 @@ export default {
 .actions {
   margin-top: 1em;
 }
-button {
+.edition {
   margin-right: 0.5em;
   padding: 0.5em 1em;
   border: none;
@@ -90,9 +90,23 @@ button {
   color: white;
   border-radius: 3px;
 }
-button:hover {
+.edition:hover {
   background-color: #0056b3;
 }
+
+.deletion {
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 3px;
+  margin-right: 0.5em;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+}
+.deletion:hover {
+  background-color: #ff3333;
+}
+
 .toggle-button {
   background: none;
   color: #007bff;

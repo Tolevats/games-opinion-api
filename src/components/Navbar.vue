@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-header {
+/* header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,43 +32,44 @@ header {
   color: #333;
   padding: 1em;
 }
-
+ */
 .brand {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  background-color: #4CAF50;
+  padding: 1em 2em;
 }
 
 .brand-icon {
-  width: 40px;
-  height: 40px;
-
+  width: 3em;
+  height: 3em;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0.5em 1em;
+  background-color: #1f1f1f;
+  padding: 1em 2em;
 }
 
-.left-links, .right-link {
+.left-links, .right-links {
   display: flex;
   gap: 1em;
+  display: inline;
+  margin: 0 1.5em 0;
 }
 
 a {
   color: white;
   text-decoration: none;
-}
-
-.right-link {
-  margin-left: auto;
+  transition: color 0.3s;
 }
 
 /* Hover effect for links */
 a:hover {
-  color: #ff4d4d;
+  color: #4CAF50;
 }
 
 /* Home icon styling */
