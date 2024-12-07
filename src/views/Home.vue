@@ -62,7 +62,7 @@ h1 {
   font-size: 2.5em;
   text-align: center;
   color: #4CAF50; /* Verde neón */
-  margin-bottom: 0.5em;
+  margin: 1em 0 0.1em;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
