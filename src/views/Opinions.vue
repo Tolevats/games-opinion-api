@@ -30,38 +30,13 @@ export default {
   },
   methods: {
     addOrUpdateOpinion(opinion) {
-      console.log('Data received:', opinion);
-      console.log(this.opinions);
- /*      this.opinions[0].author = 'test' */
-      if (opinion.index !== undefined && opinion.updatedReview) {
-      // Usar Vue.set para asegurar la reactividad
-        this.$set(this.opinions, opinion.index, opinion.updatedReview);
-      } else if (this.isEditing) {
-        this.$set(this.opinions, this.editingIndex, opinion);
-        this.isEditing = false;
-      } else {
-        this.opinions.push(opinion);
-      }
-      this.resetForm();
+      //console.log('Data received:', opinion);
+      this.opinions.push(opinion);
     },
-/*       if (this.isEditing) {
-        // Para cuando la llamada provenga del formulario normal
-        this.opinions.splice(this.editingIndex, 1, opinion);
-        this.isEditing = false;
-      } else if (opinion.index !== undefined && opinion.updatedReview) {
-        // Cuando la llamada provenga desde el Accordion con índice
-        this.opinions.splice(opinion.index, 1, opinion.updatedReview);
-      } else {
-      // Agrega una nueva opinión
-        this.opinions.push(opinion);
-      }
-      this.resetForm();
-    }, */
-
-    editOpinion(index) {
-      this.newOpinion = { ...this.opinions[index] }; //load review data into the form
-      this.isEditing = true;
-      this.editingIndex = index;
+    editOpinion(opinion) {
+      this.isEditing = false;
+      this.editingIndex = opinion.index;
+      this.opinions.splice(opinion.index,1, opinion.updatedReview)
     },
     deleteOpinion(index) {
       this.opinions.splice(index, 1);
@@ -79,14 +54,13 @@ export default {
 </script>
 
 <style scoped>
-/* .review-container {} */
-
 h2 {
   margin: 2em;
 }
 
 .no-reviews {
   margin-top: 60px;  /* Push to bottom */
+  margin: 2em;
   padding: 20px;
   background-color: #ffebeb;  /* Light red background */
   color: #d32f2f;  /* Darker red text */
