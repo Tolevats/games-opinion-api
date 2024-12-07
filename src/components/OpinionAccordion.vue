@@ -18,7 +18,7 @@
           v-if="editingIndex === index" 
           :newOpinion="reviewToEdit"
           :isEditing="true"
-          @sendOpi="saveEdit(index)"
+          @sendOpi="saveEdit($event,index)"
         />
       </div>
     </div>
@@ -34,9 +34,9 @@ export default {
   components: { OpinionForm },
   data() {
     return {
-      openIndex: null,        // Tracks which accordion is open
-      editingIndex: null,     // Tracks which review is being edited
-      reviewToEdit: null,     // Holds the review data for editing
+      openIndex: null, //tracks which accordion is open
+      editingIndex: null, //tracks which review is being edited
+      reviewToEdit: null, //holds the review data for editing
     };
   },
   methods: {
@@ -47,10 +47,10 @@ export default {
       this.editingIndex = index;  //set the index for editing
       this.reviewToEdit = { ...review };  //pass a copy of the review to the form
     },
-    saveEdit(index) {
-      console.log('Save Edit triggered:', index, this.reviewToEdit);
-      this.$emit('update', { index, updatedReview: this.reviewToEdit });  //emitir el índice y la opinión actualizada
-      this.editingIndex = null;  //cerrar la edición
+    saveEdit(event,index) {
+      //console.log('Save Edit triggered:', index, event);
+      this.$emit('edit', { index, updatedReview: event });
+      this.editingIndex = null;
     },
     deleteOpinion(index) {
       this.$emit('delete', index);  //pass the index to the parent for deletion
@@ -64,9 +64,11 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 1em;
+  margin: 2em;
   overflow: hidden;
 }
 .accordion-header {
+  color: #333;
   background-color: #f1f1f1;
   padding: 1em;
   cursor: pointer;
@@ -76,19 +78,25 @@ export default {
 }
 .accordion-body {
   padding: 1em;
+  color: #333;
   background-color: #fafafa;
 }
 .actions {
   margin-top: 1em;
 }
-.edition {
-  margin-right: 0.5em;
-  padding: 0.5em 1em;
-  border: none;
-  cursor: pointer;
-  background-color: #007bff;
+
+.edition, .deletion {
   color: white;
-  border-radius: 3px;
+  font-size: 1em;
+  margin: 0.8em 1.5em 0 0;
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
+.edition {
+  background-color: #007bff;
 }
 .edition:hover {
   background-color: #0056b3;
@@ -96,12 +104,6 @@ export default {
 
 .deletion {
   background-color: #ff4d4d;
-  color: white;
-  border-radius: 3px;
-  margin-right: 0.5em;
-  padding: 0.5em 1em;
-  border: none;
-  cursor: pointer;
 }
 .deletion:hover {
   background-color: #ff3333;
